@@ -4,7 +4,7 @@ import { switchMap, map, startWith } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
 export class SequenceService {
-  private interval$ = interval(2000).pipe(
+  private interval$ = interval(4000).pipe(
     switchMap(() =>
       interval(500).pipe(
         map(i => i + 2),
