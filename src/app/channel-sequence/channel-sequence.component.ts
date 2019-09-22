@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { SequenceService } from '../services/sequence.service';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-channel-sequence',
@@ -8,6 +9,11 @@ import { SequenceService } from '../services/sequence.service';
 })
 export class ChannelSequenceComponent {
   items = [1, 2, 3, 4];
+
+  @Input()
+  src: string;
+
+  beat$ = this.sequence.beats$.pipe(filter(beat => this.items.includes(beat)));
 
   constructor(public sequence: SequenceService) {}
 }

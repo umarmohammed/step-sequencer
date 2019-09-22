@@ -1,5 +1,12 @@
 <div class="container">
   <button (click)="sequence.play = true" class="button">Play</button>
   <button (click)="sequence.play = false" class="button">Stop</button>
-  <app-channel-sequence class="channel-sequence"></app-channel-sequence>
+  <app-channel-sequence
+    class="channel-sequence"
+    src="assets/kick-classic.wav"
+  ></app-channel-sequence>
+  <app-channel-sequence
+    class="channel-sequence"
+    src="assets/snare-808.wav"
+  ></app-channel-sequence>
 </div>
