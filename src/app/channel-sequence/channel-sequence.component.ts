@@ -13,7 +13,10 @@ export class ChannelSequenceComponent {
   @Input()
   src: string;
 
-  beat$ = this.sequence.beats$.pipe(filter(beat => this.items.includes(beat)));
+  @Input()
+  play = [] as number[];
+
+  beat$ = this.sequence.beats$.pipe(filter(beat => this.play.includes(beat)));
 
   constructor(public sequence: SequenceService) {}
 }

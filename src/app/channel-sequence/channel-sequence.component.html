@@ -6,6 +6,7 @@
   <div
     class="item"
     *ngFor="let item of items"
-    [class.active]="(beat$ | async) === item"
+    [class.active]="(sequence.beats$ | async) === item"
+    [class.selected]="play.includes(item)"
   ></div>
 </div>

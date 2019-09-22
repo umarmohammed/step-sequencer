@@ -7,10 +7,18 @@
 }
 
 .item {
-  background: #d3d8d6;
+  background: lightgray;
   border-radius: 10px;
 }
 
 .item.active {
   background: greenyellow;
+}
+
+.item.selected {
+  background: lightblue;
+}
+
+.item.selected.active {
+  background: mediumturquoise;
 }
