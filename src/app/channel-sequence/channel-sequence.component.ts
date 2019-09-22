@@ -8,7 +8,9 @@ import { filter } from 'rxjs/operators';
   styleUrls: ['./channel-sequence.component.css']
 })
 export class ChannelSequenceComponent {
-  items = [1, 2, 3, 4];
+  static quarterNotes = 8;
+
+  items: number[] = [];
 
   @Input()
   src: string;
@@ -18,5 +20,9 @@ export class ChannelSequenceComponent {
 
   beat$ = this.sequence.beats$.pipe(filter(beat => this.play.includes(beat)));
 
-  constructor(public sequence: SequenceService) {}
+  constructor(public sequence: SequenceService) {
+    for (let i = 0; i < ChannelSequenceComponent.quarterNotes; i++) {
+      this.items.push(i + 1);
+    }
+  }
 }
