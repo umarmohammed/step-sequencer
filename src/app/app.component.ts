@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { interval, Subject, NEVER } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
+import { switchMap, tap, startWith, map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -8,9 +8,19 @@ import { switchMap } from 'rxjs/operators';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  play = new Subject<boolean>();
-
-  play$ = this.play.pipe(
-    switchMap(playing => (playing ? interval(1000) : NEVER))
+  private interval$ = interval(2000).pipe(
+    switchMap(() =>
+      interval(500).pipe(
+        map(i => i + 2),
+        startWith(1)
+      )
+    )
   );
+
+  play = new Subject<boolean>();
+  play$ = this.play.pipe(
+    switchMap(playing => (playing ? this.interval$ : NEVER))
+  );
+
+  items = [1, 2, 3, 4];
 }

@@ -2,5 +2,12 @@
   <source src="assets/kick-classic.wav" type="audio/wav" />
 </audio>
 
-<button (click)="play.next(true)">Play</button>
-<button (click)="play.next(false)">Stop</button>
+<div class="container">
+  <button (click)="play.next(true)" class="button">Play</button>
+  <button (click)="play.next(false)" class="button">Stop</button>
+  <div
+    class="item"
+    *ngFor="let item of items"
+    [class.active]="(play$ | async) === item"
+  ></div>
+</div>
