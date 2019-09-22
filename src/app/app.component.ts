@@ -1,5 +1,6 @@
-import { Component, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
-import { interval, Subscription } from 'rxjs';
+import { Component } from '@angular/core';
+import { interval, Subject, NEVER } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -7,14 +8,9 @@ import { interval, Subscription } from 'rxjs';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  timer$ = interval(1000);
-  private subscription = new Subscription();
+  play = new Subject<boolean>();
 
-  play(audioPlayer: HTMLAudioElement) {
-    this.subscription = this.timer$.subscribe(() => audioPlayer.play());
-  }
-
-  stop() {
-    this.subscription.unsubscribe();
-  }
+  play$ = this.play.pipe(
+    switchMap(playing => (playing ? interval(1000) : NEVER))
+  );
 }
