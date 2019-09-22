@@ -1,12 +1,8 @@
-<audio #audioPlayer [appPlay]="beat$ | async">
+<audio #audioPlayer [appPlay]="(currentChannel$ | async)?.play">
   <source [src]="src" type="audio/wav" />
 </audio>
 
-<div class="container">
-  <div
-    class="item"
-    *ngFor="let item of items"
-    [class.active]="(sequence.beats$ | async) === item"
-    [class.selected]="play.includes(item)"
-  ></div>
-</div>
+<app-channel-sequence-display
+  [currentChannel]="currentChannel$ | async"
+  [switches]="switches$ | async"
+></app-channel-sequence-display>

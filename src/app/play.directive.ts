@@ -7,7 +7,7 @@ export class PlayDirective {
   constructor(private el: ElementRef) {}
 
   @Input('appPlay')
-  set play(value: number) {
+  set play(value: boolean) {
     if (value) {
       this.el.nativeElement.play();
     }

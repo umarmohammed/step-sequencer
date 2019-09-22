@@ -1,28 +1,35 @@
-import { Component, Input } from '@angular/core';
-import { SequenceService } from '../services/sequence.service';
-import { filter } from 'rxjs/operators';
+import {
+  Component,
+  Input,
+  ChangeDetectionStrategy,
+  OnInit
+} from '@angular/core';
+import { ChannelSequenceFacade } from '../services/channel-sequence.facade';
+import { Channel } from '../types/channel';
+import { Observable } from 'rxjs';
+import { CurrentChannel } from '../models/current-channel';
 
 @Component({
   selector: 'app-channel-sequence',
   templateUrl: './channel-sequence.component.html',
-  styleUrls: ['./channel-sequence.component.css']
+  styleUrls: ['./channel-sequence.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ChannelSequenceComponent {
-  static quarterNotes = 8;
-
-  items: number[] = [];
-
+export class ChannelSequenceComponent implements OnInit {
   @Input()
   src: string;
 
   @Input()
-  play = [] as number[];
+  channel: Channel;
 
-  beat$ = this.sequence.beats$.pipe(filter(beat => this.play.includes(beat)));
+  switches$: Observable<boolean[]>;
 
-  constructor(public sequence: SequenceService) {
-    for (let i = 0; i < ChannelSequenceComponent.quarterNotes; i++) {
-      this.items.push(i + 1);
-    }
+  currentChannel$: Observable<CurrentChannel>;
+
+  constructor(public facade: ChannelSequenceFacade) {}
+
+  ngOnInit(): void {
+    this.switches$ = this.facade.switch$(this.channel);
+    this.currentChannel$ = this.facade.currentChannel$(this.channel);
   }
 }
