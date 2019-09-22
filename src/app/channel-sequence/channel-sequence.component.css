@@ -1,0 +1,16 @@
+.container {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: repeat(4, 1fr);
+  height: 100%;
+  width: 100%;
+}
+
+.item {
+  background: #d3d8d6;
+  border-radius: 10px;
+}
+
+.item.active {
+  background: greenyellow;
+}
