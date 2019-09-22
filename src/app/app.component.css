@@ -14,15 +14,10 @@
   width: calc(100vw - 20px);
 }
 
-.item {
-  background: #d3d8d6;
-  border-radius: 10px;
-}
-
-.item.active {
-  background: greenyellow;
-}
-
 .button {
+  grid-column: span 4;
+}
+
+.channel-sequence {
   grid-column: span 4;
 }

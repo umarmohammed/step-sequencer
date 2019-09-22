@@ -8,6 +8,4 @@ import { SequenceService } from './services/sequence.service';
 })
 export class AppComponent {
   constructor(public sequence: SequenceService) {}
-
-  items = [1, 2, 3, 4];
 }

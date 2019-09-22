@@ -3,11 +3,13 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { PlayDirective } from './play.directive';
+import { ChannelSequenceComponent } from './channel-sequence/channel-sequence.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    PlayDirective
+    PlayDirective,
+    ChannelSequenceComponent
   ],
   imports: [
     BrowserModule
