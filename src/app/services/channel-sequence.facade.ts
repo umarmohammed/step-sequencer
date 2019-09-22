@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { SequenceService } from './sequence.service';
 import { BehaviorSubject, combineLatest, Observable } from 'rxjs';
-import { map, pluck, tap } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { Channel } from '../types/channel';
 import { CurrentChannel } from '../models/current-channel';
 
@@ -27,13 +27,12 @@ export class ChannelSequenceFacade {
           index,
           play: switched[index]
         })
-      ),
-      tap(console.log)
+      )
     );
 
   constructor(private sequenceService: SequenceService) {}
 
-  toggleSwitch(channel: Channel, switchIndex: number) {
+  toggleSwitch(channel: Channel, switchIndex: number): void {
     const switches = this.switches$[channel].value.map((value, index) =>
       index === switchIndex ? !value : value
     );
