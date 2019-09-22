@@ -6,9 +6,9 @@ import { switchMap, map, startWith } from 'rxjs/operators';
 export class SequenceService {
   private readonly numQuerterNotes = 8;
 
-  private interval$ = interval(4000).pipe(
+  private interval$ = interval(2000).pipe(
     switchMap(() =>
-      interval(500).pipe(
+      interval(250).pipe(
         map(i => i + 1),
         startWith(0)
       )
@@ -25,6 +25,6 @@ export class SequenceService {
   }
 
   getInitializedChannelSwitches(): boolean[] {
-    return new Array(this.numQuerterNotes).fill(0);
+    return new Array(this.numQuerterNotes).fill(false);
   }
 }

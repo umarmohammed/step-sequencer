@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CurrentChannel } from '../models/current-channel';
 
 @Component({
@@ -12,4 +12,7 @@ export class ChannelSequenceDisplayComponent {
 
   @Input()
   currentChannel: CurrentChannel;
+
+  @Output()
+  switchToggled: EventEmitter<number> = new EventEmitter<number>();
 }
