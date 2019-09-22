@@ -1,6 +1,6 @@
-<audio #audioPlayer>
+<audio #audioPlayer [appPlay]="play$ | async">
   <source src="assets/kick-classic.wav" type="audio/wav" />
 </audio>
 
-<button (click)="play(audioPlayer)">Play</button>
-<button (click)="stop()">Stop</button>
+<button (click)="play.next(true)">Play</button>
+<button (click)="play.next(false)">Stop</button>
