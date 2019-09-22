@@ -1,13 +1,13 @@
-<audio #audioPlayer [appPlay]="play$ | async">
+<audio #audioPlayer [appPlay]="sequence.beats$ | async">
   <source src="assets/kick-classic.wav" type="audio/wav" />
 </audio>
 
 <div class="container">
-  <button (click)="play.next(true)" class="button">Play</button>
-  <button (click)="play.next(false)" class="button">Stop</button>
+  <button (click)="sequence.play = true" class="button">Play</button>
+  <button (click)="sequence.play = false" class="button">Stop</button>
   <div
     class="item"
     *ngFor="let item of items"
-    [class.active]="(play$ | async) === item"
+    [class.active]="(sequence.beats$ | async) === item"
   ></div>
 </div>

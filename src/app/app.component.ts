@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { interval, Subject, NEVER } from 'rxjs';
-import { switchMap, tap, startWith, map } from 'rxjs/operators';
+import { SequenceService } from './services/sequence.service';
 
 @Component({
   selector: 'app-root',
@@ -8,19 +7,7 @@ import { switchMap, tap, startWith, map } from 'rxjs/operators';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  private interval$ = interval(2000).pipe(
-    switchMap(() =>
-      interval(500).pipe(
-        map(i => i + 2),
-        startWith(1)
-      )
-    )
-  );
-
-  play = new Subject<boolean>();
-  play$ = this.play.pipe(
-    switchMap(playing => (playing ? this.interval$ : NEVER))
-  );
+  constructor(public sequence: SequenceService) {}
 
   items = [1, 2, 3, 4];
 }
