@@ -4,7 +4,7 @@ import { map, filter, scan, distinctUntilChanged, tap } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
 export class SequenceService {
-  static readonly numQuerterNotes = 8;
+  static readonly numQuerterNotes = 16;
 
   private interval$ = interval(250);
 
