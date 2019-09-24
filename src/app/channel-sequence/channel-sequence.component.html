@@ -1,8 +1,5 @@
-<audio [appPlay]="switches[beat]">
-  <source [src]="src" type="audio/wav" />
-</audio>
-
 <app-channel-sequence-display
+  [appPlay]="switches[beat]"
   [switches]="switches"
   (switchToggled)="switches[$event] = !switches[$event]"
   [index]="beat"
