@@ -10,12 +10,9 @@ type SwitchState = { [K in Channel]: BehaviorSubject<boolean[]> };
 @Injectable({ providedIn: 'root' })
 export class ChannelSequenceFacade {
   private switches$: SwitchState = {
-    kick: new BehaviorSubject<boolean[]>(
-      this.sequenceService.getInitializedChannelSwitches()
-    ),
-    snare: new BehaviorSubject<boolean[]>(
-      this.sequenceService.getInitializedChannelSwitches()
-    )
+    kick: this.getInitialChannelState(),
+    snare: this.getInitialChannelState(),
+    clap: this.getInitialChannelState()
   };
 
   switch$ = (channel: Channel) => this.switches$[channel].asObservable();
@@ -38,5 +35,11 @@ export class ChannelSequenceFacade {
     );
 
     this.switches$[channel].next(switches);
+  }
+
+  private getInitialChannelState(): BehaviorSubject<boolean[]> {
+    return new BehaviorSubject<boolean[]>(
+      this.sequenceService.getInitializedChannelSwitches()
+    );
   }
 }
