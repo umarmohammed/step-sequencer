@@ -1,11 +1,9 @@
 import { Component } from '@angular/core';
-import { SequenceService } from './services/sequence.service';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  template: `
+    <app-step-sequencer></app-step-sequencer>
+  `
 })
-export class AppComponent {
-  constructor(public sequence: SequenceService) {}
-}
+export class AppComponent {}

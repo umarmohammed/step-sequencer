@@ -1,5 +1,4 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { CurrentChannel } from '../models/current-channel';
 
 @Component({
   selector: 'app-channel-sequence-display',
@@ -11,7 +10,7 @@ export class ChannelSequenceDisplayComponent {
   switches: boolean[];
 
   @Input()
-  currentChannel: CurrentChannel;
+  index: number;
 
   @Output()
   switchToggled: EventEmitter<number> = new EventEmitter<number>();

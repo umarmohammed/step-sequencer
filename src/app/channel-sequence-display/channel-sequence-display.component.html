@@ -2,7 +2,7 @@
   <div
     class="item"
     *ngFor="let channel of switches; let i = index"
-    [class.active]="currentChannel?.index === i"
+    [class.active]="index === i"
     [class.selected]="switches[i]"
     (click)="switchToggled.emit(i)"
   ></div>

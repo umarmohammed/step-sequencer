@@ -4,15 +4,18 @@
     class="channel-sequence"
     src="assets/kick-classic.wav"
     channel="kick"
+    [beat]="sequence.beats$ | async"
   ></app-channel-sequence>
   <app-channel-sequence
     class="channel-sequence"
     src="assets/snare-808.wav"
     channel="snare"
+    [beat]="sequence.beats$ | async"
   ></app-channel-sequence>
   <app-channel-sequence
     class="channel-sequence"
     src="assets/clap-808.wav"
     channel="clap"
+    [beat]="sequence.beats$ | async"
   ></app-channel-sequence>
 </div>

@@ -1,9 +1,9 @@
-<audio [appPlay]="(currentChannel$ | async)?.play">
+<audio [appPlay]="switches[beat]">
   <source [src]="src" type="audio/wav" />
 </audio>
 
 <app-channel-sequence-display
-  [currentChannel]="currentChannel$ | async"
-  [switches]="switches$ | async"
-  (switchToggled)="facade.toggleSwitch(channel, $event)"
+  [switches]="switches"
+  (switchToggled)="switches[$event] = !switches[$event]"
+  [index]="beat"
 ></app-channel-sequence-display>
