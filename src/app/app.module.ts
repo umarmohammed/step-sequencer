@@ -15,10 +15,8 @@ import { StepSequencerComponent } from './step-sequencer/step-sequencer.componen
     ChannelSequenceDisplayComponent,
     StepSequencerComponent
   ],
-  imports: [
-    BrowserModule
-  ],
+  imports: [BrowserModule],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
