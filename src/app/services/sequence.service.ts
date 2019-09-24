@@ -1,18 +1,13 @@
 import { Injectable } from '@angular/core';
 import { interval, Subject, NEVER } from 'rxjs';
-import { switchMap, map, startWith } from 'rxjs/operators';
+import { switchMap, map } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
 export class SequenceService {
-  private readonly numQuerterNotes = 8;
+  static readonly numQuerterNotes = 8;
 
-  private interval$ = interval(2000).pipe(
-    switchMap(() =>
-      interval(250).pipe(
-        map(i => i + 1),
-        startWith(0)
-      )
-    )
+  private interval$ = interval(250).pipe(
+    map(i => i % SequenceService.numQuerterNotes)
   );
 
   private playSubject = new Subject<boolean>();
@@ -25,6 +20,6 @@ export class SequenceService {
   }
 
   getInitializedChannelSwitches(): boolean[] {
-    return new Array(this.numQuerterNotes).fill(false);
+    return new Array(SequenceService.numQuerterNotes).fill(false);
   }
 }
