@@ -1,1 +1,1 @@
-export type Channel = 'kick' | 'snare';
+export type Channel = 'kick' | 'snare' | 'clap';
