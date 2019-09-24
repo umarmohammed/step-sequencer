@@ -1,6 +1,6 @@
 <div class="container">
-  <button (click)="sequence.play = true" class="button">Play</button>
-  <button (click)="sequence.play = false" class="button">Stop</button>
+  <button (click)="sequence.togglePlaying()" class="button">Play</button>
+  <button (click)="sequence.togglePlaying()" class="button">Stop</button>
   <app-channel-sequence
     class="channel-sequence"
     src="assets/kick-classic.wav"
