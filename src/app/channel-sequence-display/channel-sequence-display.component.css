@@ -7,8 +7,12 @@
 }
 
 .item {
-  background: lightgray;
+  background: lightcyan;
   border-radius: 10px;
+}
+
+.item.odd-bar {
+  background: lavender;
 }
 
 .item.active {
@@ -16,7 +20,7 @@
 }
 
 .item.selected {
-  background: lightblue;
+  background: mediumspringgreen;
 }
 
 .item.selected.active {
