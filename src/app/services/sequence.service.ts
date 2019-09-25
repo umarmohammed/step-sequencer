@@ -8,7 +8,7 @@ export class SequenceService {
 
   private interval$ = interval(116);
 
-  private playingSubject = new BehaviorSubject<boolean>(false);
+  private playingSubject = new BehaviorSubject<boolean>(true);
   playing$ = this.playingSubject.asObservable();
 
   constructor() {
