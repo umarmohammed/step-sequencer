@@ -1,5 +1,4 @@
 <div class="container">
-  <button (click)="sequence.togglePlaying()" class="button">Play</button>
   <app-channel-sequence
     class="channel-sequence"
     src="assets/kick-classic.wav"
@@ -7,12 +6,17 @@
   ></app-channel-sequence>
   <app-channel-sequence
     class="channel-sequence"
-    src="assets/snare-808.wav"
+    src="assets/clap-808.wav"
     [beat]="sequence.beats$ | async"
   ></app-channel-sequence>
   <app-channel-sequence
     class="channel-sequence"
     src="assets/hihat-808.wav"
+    [beat]="sequence.beats$ | async"
+  ></app-channel-sequence>
+  <app-channel-sequence
+    class="channel-sequence"
+    src="assets/snare-808.wav"
     [beat]="sequence.beats$ | async"
   ></app-channel-sequence>
 </div>
