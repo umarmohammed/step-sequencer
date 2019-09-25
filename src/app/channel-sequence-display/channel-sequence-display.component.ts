@@ -14,4 +14,8 @@ export class ChannelSequenceDisplayComponent {
 
   @Output()
   switchToggled: EventEmitter<number> = new EventEmitter<number>();
+
+  isOddBar(i: number): boolean {
+    return !!(Math.ceil((i + 1) / 4) % 2);
+  }
 }

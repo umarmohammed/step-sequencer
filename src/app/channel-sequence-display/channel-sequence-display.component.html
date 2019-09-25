@@ -5,5 +5,6 @@
     [class.active]="index === i"
     [class.selected]="switches[i]"
     (click)="switchToggled.emit(i)"
+    [class.odd-bar]="isOddBar(i)"
   ></div>
 </div>
